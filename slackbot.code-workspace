@@ -1,0 +1,41 @@
+{
+	"folders": [
+		{
+			"name": "slackbot",
+			"path": "."
+		}
+	],
+	"launch": {
+		"configurations": [
+			{
+				"type": "aws-sam",
+				"request": "direct-invoke",
+				"name": "slackbot:app.lambda_handler (python3.8)",
+				"invokeTarget": {
+					"target": "code",
+					"projectRoot": "botcore",
+					"lambdaHandler": "app.lambda_handler"
+				},
+				"lambda": {
+					"runtime": "python3.8",
+					"payload": {},
+					"environmentVariables": {}
+				}
+			},
+			{
+				"type": "aws-sam",
+				"request": "direct-invoke",
+				"name": "slackbot:SlackBotFunction (python3.8)",
+				"invokeTarget": {
+					"target": "template",
+					"templatePath": "slackbot/template.yaml",
+					"logicalId": "SlackBotFunction"
+				},
+				"lambda": {
+					"payload": {},
+					"environmentVariables": {}
+				}
+			}
+		]
+	}
+}
