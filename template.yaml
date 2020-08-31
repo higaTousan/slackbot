@@ -23,6 +23,9 @@ Resources:
           Properties:
             Path: /bot
             Method: POST
+      Environment:
+        Variables:
+          SLACK_TOKEN: !Ref SlackToken
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
@@ -37,3 +40,7 @@ Outputs:
   SlackBotFunctionIamRole:
     Description: "Implicit IAM Role created for SlackBot function"
     Value: !GetAtt SlackBotFunctionRole.Arn
+
+Parameters:
+  SlackToken:
+    Type: String
